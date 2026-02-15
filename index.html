@@ -21,6 +21,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Rajdhani', sans-serif;
             background: var(--black);
@@ -28,7 +32,7 @@
             line-height: 1.6;
         }
 
-        /* Navbar Industrial */
+        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -50,7 +54,6 @@
             color: var(--primary-orange);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .nav-menu {
@@ -69,23 +72,8 @@
             position: relative;
         }
 
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-orange);
-            transition: width 0.3s ease;
-        }
-
         .nav-menu a:hover {
             color: var(--accent-yellow);
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
         }
 
         .cart-btn {
@@ -93,7 +81,6 @@
             color: var(--black);
             padding: 0.6rem 1.5rem;
             border: none;
-            border-radius: 0;
             clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
             font-weight: 700;
             font-size: 1rem;
@@ -106,7 +93,7 @@
             box-shadow: 0 5px 20px rgba(255, 107, 53, 0.5);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             margin-top: 80px;
             min-height: 90vh;
@@ -116,15 +103,12 @@
             position: relative;
             background: 
                 radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 200, 87, 0.1) 0%, transparent 50%),
                 linear-gradient(135deg, var(--dark-blue) 0%, var(--black) 100%);
             overflow: hidden;
         }
 
         .blueprint-grid {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             background-image: 
@@ -137,18 +121,6 @@
             text-align: center;
             z-index: 2;
             padding: 2rem;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .hero h1 {
@@ -158,9 +130,7 @@
             letter-spacing: 0.1em;
             color: var(--accent-yellow);
             text-transform: uppercase;
-            text-shadow: 
-                0 0 30px rgba(255, 200, 87, 0.6),
-                3px 3px 6px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 0 30px rgba(255, 200, 87, 0.6);
             margin-bottom: 1rem;
         }
 
@@ -186,14 +156,12 @@
         }
 
         .cta-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+            transform: translateY(-3px);
         }
 
-        /* Section Headers */
+        /* Section */
         .section {
             padding: 6rem 2rem;
-            position: relative;
         }
 
         .section-header {
@@ -208,7 +176,6 @@
             color: var(--accent-yellow);
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            margin-bottom: 1rem;
             position: relative;
             display: inline-block;
         }
@@ -221,10 +188,132 @@
             transform: translateX(-50%);
             width: 150px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--primary-orange), var(--accent-yellow), var(--primary-orange), transparent);
+            background: linear-gradient(90deg, transparent, var(--primary-orange), transparent);
         }
 
-        /* Categories Grid */
+        /* Search */
+        .search-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(61, 68, 81, 0.8);
+            border: 2px solid var(--primary-orange);
+            color: white;
+            font-size: 1.1rem;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+        }
+
+        /* Products */
+        .products-catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-item {
+            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--dark-blue) 100%);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-orange);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.4);
+        }
+
+        .product-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-item:hover .product-image img {
+            transform: scale(1.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--primary-orange) 100%);
+            color: var(--black);
+            padding: 0.5rem 1rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+        }
+
+        .product-badge.hot {
+            background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
+            color: white;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .product-category {
+            color: var(--accent-yellow);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-orange);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-yellow) 100%);
+            color: var(--black);
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        /* Categories */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -237,10 +326,9 @@
             position: relative;
             overflow: hidden;
             height: 350px;
-            background: var(--steel-gray);
             border: 2px solid rgba(255, 107, 53, 0.3);
             clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s ease;
             cursor: pointer;
         }
 
@@ -266,14 +354,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(15, 15, 15, 0.95) 0%, rgba(15, 15, 15, 0.7) 60%, transparent 100%);
+            background: linear-gradient(to top, rgba(15, 15, 15, 0.95) 0%, transparent 100%);
             padding: 2rem;
-            transform: translateY(0);
-            transition: all 0.4s ease;
-        }
-
-        .category-card:hover .category-overlay {
-            background: linear-gradient(to top, rgba(255, 107, 53, 0.95) 0%, rgba(255, 107, 53, 0.7) 60%, transparent 100%);
         }
 
         .category-title {
@@ -282,12 +364,7 @@
             font-weight: 700;
             color: var(--accent-yellow);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
             margin-bottom: 0.5rem;
-        }
-
-        .category-card:hover .category-title {
-            color: var(--black);
         }
 
         .category-desc {
@@ -295,11 +372,7 @@
             font-size: 1.1rem;
         }
 
-        .category-card:hover .category-desc {
-            color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Projects Gallery */
+        /* Projects */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -312,26 +385,8 @@
             position: relative;
             overflow: hidden;
             height: 400px;
-            background: var(--steel-gray);
             border: 3px solid var(--primary-orange);
             transition: all 0.4s ease;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--primary-orange), var(--accent-yellow), var(--primary-orange));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
         }
 
         .project-card:hover {
@@ -372,10 +427,55 @@
             font-size: 1.8rem;
             color: var(--accent-yellow);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
-        /* Contact Section */
+        /* Form */
+        .quote-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--dark-blue) 100%);
+            padding: 3rem;
+            border: 2px solid var(--primary-orange);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--accent-yellow);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(15, 15, 15, 0.7);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-yellow) 100%);
+            color: var(--black);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+        }
+
+        /* Contact */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -388,13 +488,6 @@
             background: linear-gradient(135deg, var(--steel-gray) 0%, var(--dark-blue) 100%);
             padding: 2.5rem;
             border-left: 5px solid var(--primary-orange);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateX(10px);
-            box-shadow: -5px 10px 30px rgba(255, 107, 53, 0.3);
         }
 
         .contact-card h3 {
@@ -403,12 +496,6 @@
             color: var(--accent-yellow);
             margin-bottom: 1.5rem;
             text-transform: uppercase;
-        }
-
-        .contact-card p {
-            font-size: 1.1rem;
-            color: var(--light-gray);
-            line-height: 1.8;
         }
 
         /* Footer */
@@ -443,12 +530,6 @@
             text-decoration: none;
             display: block;
             margin-bottom: 0.8rem;
-            transition: all 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: var(--primary-orange);
-            padding-left: 10px;
         }
 
         .footer-bottom {
@@ -458,300 +539,17 @@
             color: var(--light-gray);
         }
 
-        /* Form Styling */
-        .quote-form {
-            max-width: 800px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--dark-blue) 100%);
-            padding: 3rem;
-            border: 2px solid var(--primary-orange);
-            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: var(--accent-yellow);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(15, 15, 15, 0.7);
-            border: 2px solid rgba(255, 107, 53, 0.3);
-            color: white;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-orange);
-            box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1.2rem;
-            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-yellow) 100%);
-            color: var(--black);
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
-        }
-
-        /* Search Bar */
-        .search-container {
-            max-width: 600px;
-            margin: 3rem auto;
-            position: relative;
-        }
-
-        /* Products Catalog */
-        .products-catalog {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .product-item {
-            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--dark-blue) 100%);
-            border: 2px solid rgba(255, 107, 53, 0.3);
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
-        }
-
-        .product-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-orange);
-            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.4);
-        }
-
-        .product-image {
-            position: relative;
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-item:hover .product-image img {
-            transform: scale(1.15);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--primary-orange) 100%);
-            color: var(--black);
-            padding: 0.5rem 1rem;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .product-badge.hot {
-            background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
-            color: white;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-
-        .product-name {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
-            color: white;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-
-        .product-category {
-            color: var(--accent-yellow);
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-            letter-spacing: 0.05em;
-        }
-
-        .product-price {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
-            color: var(--primary-orange);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .add-to-cart-btn {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-yellow) 100%);
-            color: var(--black);
-            border: none;
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
-            transition: all 0.3s ease;
-        }
-
-        .add-to-cart-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
-        }
-
-        /* Search Bar */
-        .search-container {
-            max-width: 600px;
-            margin: 3rem auto;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1.2rem 1.5rem;
-            background: rgba(61, 68, 81, 0.8);
-            border: 2px solid var(--primary-orange);
-            color: white;
-            font-size: 1.1rem;
-            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
-        }
-
-        .search-input:focus {
-            outline: none;
-            box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
-        }
-
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--dark-blue) 100%);
-            border: 2px solid var(--primary-orange);
-            margin-top: 1rem;
-            max-height: 400px;
-            overflow-y: auto;
-            display: none;
-            z-index: 100;
-            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
-        }
-
-        .search-results.active {
-            display: block;
-        }
-
-        .search-result-item {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .search-result-item:hover {
-            background: rgba(255, 107, 53, 0.2);
-            padding-left: 2rem;
-        }
-
-        .search-result-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
-            color: var(--accent-yellow);
-            margin-bottom: 0.5rem;
-        }
-
-        .search-result-desc {
-            color: var(--light-gray);
-            font-size: 1rem;
-        }
-
-        .search-result-type {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: var(--primary-orange);
-            color: var(--black);
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-top: 0.5rem;
-            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
-        }
-
-        .no-results {
-            padding: 2rem;
-            text-align: center;
-            color: var(--light-gray);
-            font-size: 1.1rem;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
             }
-
-            .hero {
-                min-height: 70vh;
-            }
-
             .section {
                 padding: 4rem 1rem;
             }
-
-            .categories-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .quote-form {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">FERRETERÍA MARQUEZ</div>
         <ul class="nav-menu">
@@ -761,10 +559,9 @@
             <li><a href="#cotizacion">Cotización</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
-        <button class="cart-btn">🛒 Carrito <span>0</span></button>
+        <button class="cart-btn" id="cartButton">🛒 Carrito <span id="cartCount">0</span></button>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="blueprint-grid"></div>
         <div class="hero-content">
@@ -774,22 +571,18 @@
         </div>
     </section>
 
-    <!-- Search Bar -->
     <div class="search-container">
-        <input type="text" id="searchInput" class="search-input" placeholder="Buscar productos, categorías, proyectos...">
-        <div id="searchResults" class="search-results"></div>
+        <input type="text" class="search-input" placeholder="Buscar productos, categorías, proyectos...">
     </div>
 
-    <!-- Productos Destacados Section -->
     <section id="productos" class="section">
         <div class="section-header">
             <h2 class="section-title">Catálogo de Productos</h2>
         </div>
         <div class="products-catalog">
-            <!-- Herramientas -->
             <div class="product-item">
                 <div class="product-image">
-                    <img src="herramientas.jpg" alt="Taladro Eléctrico">
+                    <img src="herramientas.jpg" alt="Taladro">
                     <div class="product-badge">Nuevo</div>
                 </div>
                 <div class="product-info">
@@ -815,7 +608,7 @@
 
             <div class="product-item">
                 <div class="product-image">
-                    <img src="herramientas.jpg" alt="Sierra Circular">
+                    <img src="herramientas.jpg" alt="Sierra">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Sierra Circular 7¼"</h3>
@@ -825,7 +618,6 @@
                 </div>
             </div>
 
-            <!-- Construcción -->
             <div class="product-item">
                 <div class="product-image">
                     <img src="Construcción.jpg" alt="Cemento">
@@ -863,10 +655,9 @@
                 </div>
             </div>
 
-            <!-- Plomería -->
             <div class="product-item">
                 <div class="product-image">
-                    <img src="Tubería y accesorios.jpg" alt="Tubería PVC">
+                    <img src="Tubería y accesorios.jpg" alt="Tubería">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Tubería PVC 2" x 6m</h3>
@@ -878,7 +669,7 @@
 
             <div class="product-item">
                 <div class="product-image">
-                    <img src="Tubería y accesorios.jpg" alt="Codos PVC">
+                    <img src="Tubería y accesorios.jpg" alt="Codos">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Codo PVC 90° 2"</h3>
@@ -890,7 +681,7 @@
 
             <div class="product-item">
                 <div class="product-image">
-                    <img src="Tubería y accesorios.jpg" alt="Llaves de paso">
+                    <img src="Tubería y accesorios.jpg" alt="Llave">
                     <div class="product-badge">Nuevo</div>
                 </div>
                 <div class="product-info">
@@ -901,13 +692,12 @@
                 </div>
             </div>
 
-            <!-- Electricidad -->
             <div class="product-item">
                 <div class="product-image">
-                    <img src="Electricidad.jpg" alt="Cable eléctrico">
+                    <img src="Electricidad.jpg" alt="Cable">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Cable THW #12 (rollo 100m)</h3>
+                    <h3 class="product-name">Cable THW #12 (100m)</h3>
                     <p class="product-category">Electricidad</p>
                     <p class="product-price">RD$ 3,200</p>
                     <button class="add-to-cart-btn">Agregar al Carrito</button>
@@ -916,7 +706,7 @@
 
             <div class="product-item">
                 <div class="product-image">
-                    <img src="Electricidad.jpg" alt="Breakers">
+                    <img src="Electricidad.jpg" alt="Breaker">
                     <div class="product-badge hot">Popular</div>
                 </div>
                 <div class="product-info">
@@ -929,7 +719,7 @@
 
             <div class="product-item">
                 <div class="product-image">
-                    <img src="Electricidad.jpg" alt="Tomacorrientes">
+                    <img src="Electricidad.jpg" alt="Toma">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Tomacorriente Doble</h3>
@@ -939,13 +729,12 @@
                 </div>
             </div>
 
-            <!-- Pintura -->
             <div class="product-item">
                 <div class="product-image">
-                    <img src="Recubrimientos industriales.jpg" alt="Pintura látex">
+                    <img src="Recubrimientos industriales.jpg" alt="Pintura">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Pintura Látex 5 Galones</h3>
+                    <h3 class="product-name">Pintura Látex 5 Gal</h3>
                     <p class="product-category">Pintura</p>
                     <p class="product-price">RD$ 2,850</p>
                     <button class="add-to-cart-btn">Agregar al Carrito</button>
@@ -958,7 +747,7 @@
                     <div class="product-badge">Nuevo</div>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Esmalte Industrial 1 Galón</h3>
+                    <h3 class="product-name">Esmalte Industrial 1 Gal</h3>
                     <p class="product-category">Pintura</p>
                     <p class="product-price">RD$ 980</p>
                     <button class="add-to-cart-btn">Agregar al Carrito</button>
@@ -970,14 +759,13 @@
                     <img src="Recubrimientos industriales.jpg" alt="Brochas">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Set de Brochas Profesional</h3>
+                    <h3 class="product-name">Set Brochas Profesional</h3>
                     <p class="product-category">Pintura</p>
                     <p class="product-price">RD$ 450</p>
                     <button class="add-to-cart-btn">Agregar al Carrito</button>
                 </div>
             </div>
 
-            <!-- Seguridad -->
             <div class="product-item">
                 <div class="product-image">
                     <img src="Equipo de protección.jpg" alt="Casco">
@@ -996,7 +784,7 @@
                     <img src="Equipo de protección.jpg" alt="Guantes">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Guantes de Seguridad (Par)</h3>
+                    <h3 class="product-name">Guantes de Seguridad</h3>
                     <p class="product-category">Seguridad</p>
                     <p class="product-price">RD$ 180</p>
                     <button class="add-to-cart-btn">Agregar al Carrito</button>
@@ -1017,7 +805,6 @@
         </div>
     </section>
 
-    <!-- Categorías Section -->
     <section id="categorias" class="section">
         <div class="section-header">
             <h2 class="section-title">Nuestras Categorías</h2>
@@ -1068,32 +855,31 @@
         </div>
     </section>
 
-    <!-- Proyectos Section -->
     <section id="proyectos" class="section">
         <div class="section-header">
             <h2 class="section-title">Galería de Proyectos</h2>
         </div>
         <div class="projects-grid">
             <div class="project-card">
-                <img src="Construcción Industrial.jpg" alt="Construcción Industrial">
+                <img src="Construcción Industrial.jpg" alt="Industrial">
                 <div class="project-overlay">
                     <h3 class="project-title">Construcción Industrial</h3>
                 </div>
             </div>
             <div class="project-card">
-                <img src="Proyectos Residenciales.jpg" alt="Proyectos Residenciales">
+                <img src="Proyectos Residenciales.jpg" alt="Residencial">
                 <div class="project-overlay">
                     <h3 class="project-title">Proyectos Residenciales</h3>
                 </div>
             </div>
             <div class="project-card">
-                <img src="instalaciones tecnicas.jpg" alt="Instalaciones Técnicas">
+                <img src="instalaciones tecnicas.jpg" alt="Técnicas">
                 <div class="project-overlay">
                     <h3 class="project-title">Instalaciones Técnicas</h3>
                 </div>
             </div>
             <div class="project-card">
-                <img src="Maquinaria Pesada.jpg" alt="Maquinaria Pesada">
+                <img src="Maquinaria Pesada.jpg" alt="Maquinaria">
                 <div class="project-overlay">
                     <h3 class="project-title">Maquinaria Pesada</h3>
                 </div>
@@ -1105,7 +891,7 @@
                 </div>
             </div>
             <div class="project-card">
-                <img src="Plantas Industriales.jpg" alt="Plantas Industriales">
+                <img src="Plantas Industriales.jpg" alt="Plantas">
                 <div class="project-overlay">
                     <h3 class="project-title">Plantas Industriales</h3>
                 </div>
@@ -1113,12 +899,11 @@
         </div>
     </section>
 
-    <!-- Cotización Section -->
     <section id="cotizacion" class="section">
         <div class="section-header">
             <h2 class="section-title">Solicitar Cotización</h2>
         </div>
-        <form class="quote-form">
+        <form class="quote-form" id="quoteForm">
             <div class="form-group">
                 <label>Nombre Completo</label>
                 <input type="text" required>
@@ -1139,12 +924,12 @@
                 <label>Categoría de Producto</label>
                 <select required>
                     <option value="">Seleccione una categoría</option>
-                    <option value="herramientas">Herramientas</option>
-                    <option value="construccion">Construcción</option>
-                    <option value="plomeria">Plomería</option>
-                    <option value="electricidad">Electricidad</option>
-                    <option value="pintura">Pintura</option>
-                    <option value="seguridad">Seguridad</option>
+                    <option>Herramientas</option>
+                    <option>Construcción</option>
+                    <option>Plomería</option>
+                    <option>Electricidad</option>
+                    <option>Pintura</option>
+                    <option>Seguridad</option>
                 </select>
             </div>
             <div class="form-group">
@@ -1155,7 +940,6 @@
         </form>
     </section>
 
-    <!-- Contacto Section -->
     <section id="contacto" class="section">
         <div class="section-header">
             <h2 class="section-title">Información de Contacto</h2>
@@ -1167,7 +951,7 @@
             </div>
             <div class="contact-card">
                 <h3>📞 Contacto</h3>
-                <p>Teléfono: +1 (809) 555-0100<br>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7402111a0015073412110606110011061d155a171b19">[email&#160;protected]</a></p>
+                <p>+1 (809) 555-0100<br>ventas@ferreteria.com</p>
             </div>
             <div class="contact-card">
                 <h3>🕐 Horario</h3>
@@ -1176,12 +960,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-section">
                 <h3>Sobre Nosotros</h3>
-                <p>Somos tu proveedor de confianza en herramientas y materiales de construcción con más de 20 años de experiencia en el mercado.</p>
+                <p>Somos tu proveedor de confianza en herramientas y materiales de construcción con más de 20 años de experiencia.</p>
             </div>
             <div class="footer-section">
                 <h3>Enlaces Rápidos</h3>
@@ -1216,209 +999,75 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Search Database
-        const searchDatabase = [
-            // Categorías
-            { title: 'Herramientas', desc: 'Herramientas eléctricas y manuales de alta calidad', type: 'Categoría', link: '#categorias' },
-            { title: 'Construcción', desc: 'Materiales de obra certificados', type: 'Categoría', link: '#categorias' },
-            { title: 'Plomería', desc: 'Tubería y accesorios profesionales', type: 'Categoría', link: '#categorias' },
-            { title: 'Electricidad', desc: 'Cables y componentes eléctricos', type: 'Categoría', link: '#categorias' },
-            { title: 'Pintura', desc: 'Recubrimientos industriales premium', type: 'Categoría', link: '#categorias' },
-            { title: 'Seguridad', desc: 'Equipo de protección certificado', type: 'Categoría', link: '#categorias' },
-            // Proyectos
-            { title: 'Construcción Industrial', desc: 'Proyectos de construcción industrial', type: 'Proyecto', link: '#proyectos' },
-            { title: 'Proyectos Residenciales', desc: 'Construcciones residenciales', type: 'Proyecto', link: '#proyectos' },
-            { title: 'Instalaciones Técnicas', desc: 'Instalaciones técnicas especializadas', type: 'Proyecto', link: '#proyectos' },
-            { title: 'Maquinaria Pesada', desc: 'Proyectos con maquinaria pesada', type: 'Proyecto', link: '#proyectos' },
-            { title: 'Infraestructura', desc: 'Proyectos de infraestructura', type: 'Proyecto', link: '#proyectos' },
-            { title: 'Plantas Industriales', desc: 'Construcción de plantas industriales', type: 'Proyecto', link: '#proyectos' },
-            // Productos comunes
-            { title: 'Taladros', desc: 'Taladros eléctricos y percutores', type: 'Producto', link: '#categorias' },
-            { title: 'Martillos', desc: 'Martillos de construcción', type: 'Producto', link: '#categorias' },
-            { title: 'Cemento', desc: 'Cemento de alta calidad', type: 'Producto', link: '#categorias' },
-            { title: 'Arena', desc: 'Arena para construcción', type: 'Producto', link: '#categorias' },
-            { title: 'Varillas', desc: 'Varillas de acero para construcción', type: 'Producto', link: '#categorias' },
-            { title: 'Tuberías PVC', desc: 'Tuberías de PVC para plomería', type: 'Producto', link: '#categorias' },
-            { title: 'Cables eléctricos', desc: 'Cables y alambres eléctricos', type: 'Producto', link: '#categorias' },
-            { title: 'Enchufes', desc: 'Enchufes y tomas eléctricas', type: 'Producto', link: '#categorias' },
-            { title: 'Brochas', desc: 'Brochas y rodillos para pintura', type: 'Producto', link: '#categorias' },
-            { title: 'Esmalte', desc: 'Esmalte y pinturas industriales', type: 'Producto', link: '#categorias' },
-            { title: 'Cascos', desc: 'Cascos de seguridad industrial', type: 'Producto', link: '#categorias' },
-            { title: 'Guantes', desc: 'Guantes de protección', type: 'Producto', link: '#categorias' },
-            { title: 'Gafas de seguridad', desc: 'Gafas protectoras', type: 'Producto', link: '#categorias' }
-        ];
-
-        const searchInput = document.getElementById('searchInput');
-        const searchResults = document.getElementById('searchResults');
-
-        // Search function
-        function performSearch(query) {
-            if (query.length < 2) {
-                searchResults.classList.remove('active');
-                return;
-            }
-
-            const results = searchDatabase.filter(item => 
-                item.title.toLowerCase().includes(query.toLowerCase()) ||
-                item.desc.toLowerCase().includes(query.toLowerCase())
-            );
-
-            displayResults(results);
-        }
-
-        // Display results
-        function displayResults(results) {
-            searchResults.innerHTML = '';
-
-            if (results.length === 0) {
-                searchResults.innerHTML = '<div class="no-results">No se encontraron resultados</div>';
-                searchResults.classList.add('active');
-                return;
-            }
-
-            results.forEach(result => {
-                const resultItem = document.createElement('div');
-                resultItem.className = 'search-result-item';
-                resultItem.innerHTML = `
-                    <div class="search-result-title">${result.title}</div>
-                    <div class="search-result-desc">${result.desc}</div>
-                    <span class="search-result-type">${result.type}</span>
-                `;
-                resultItem.addEventListener('click', () => {
-                    window.location.href = result.link;
-                    searchResults.classList.remove('active');
-                    searchInput.value = '';
-                });
-                searchResults.appendChild(resultItem);
-            });
-
-            searchResults.classList.add('active');
-        }
-
-        // Event listeners
-        searchInput.addEventListener('input', (e) => {
-            performSearch(e.target.value);
-        });
-
-        searchInput.addEventListener('focus', (e) => {
-            if (e.target.value.length >= 2) {
-                performSearch(e.target.value);
-            }
-        });
-
-        // Close search results when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.classList.remove('active');
-            }
-        });
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form submission
-        document.querySelector('.quote-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('¡Gracias! Tu cotización ha sido enviada. Nos pondremos en contacto contigo pronto.');
-            e.target.reset();
-        });
-
-        // Cart functionality (basic)
+    <script>
+        // Cart functionality
         let cartCount = 0;
-             const cartBtn = document.querySelector('.cart-btn span');
-        
-        document.querySelector('.cart-btn').addEventListener('click', () => {
+        const cartCountElement = document.getElementById('cartCount');
+        const cartButton = document.getElementById('cartButton');
+
+        // Cart button click
+        cartButton.addEventListener('click', function() {
             if (cartCount === 0) {
-                alert('Tu carrito está vacío.\n\nAgrega productos usando el botón "Agregar al Carrito".');
+                alert('Tu carrito está vacío.\n\nAgrega productos desde el catálogo.');
             } else {
-                alert(`Carrito de compras (${cartCount} items)\n\nTotal estimado: Calculando...\n\nEsta funcionalidad estará completamente disponible próximamente.`);
+                alert('Carrito de compras (' + cartCount + ' items)\n\nEsta funcionalidad estará disponible próximamente.');
             }
         });
 
         // Add to cart buttons
-        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const productItem = e.target.closest('.product-item');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+        addToCartButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                const productItem = this.closest('.product-item');
                 const productName = productItem.querySelector('.product-name').textContent;
-                const productPrice = productItem.querySelector('.product-price').textContent;
                 
                 cartCount++;
-                cartBtn.textContent = cartCount;
+                cartCountElement.textContent = cartCount;
                 
                 // Visual feedback
-                button.textContent = '✓ Agregado';
-                button.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
+                this.textContent = '✓ Agregado';
+                this.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
                 
-                setTimeout(() => {
-                    button.textContent = 'Agregar al Carrito';
-                    button.style.background = 'linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-yellow) 100%)';
+                const originalButton = this;
+                setTimeout(function() {
+                    originalButton.textContent = 'Agregar al Carrito';
+                    originalButton.style.background = '';
                 }, 2000);
                 
                 // Show notification
-                showNotification(`${productName} agregado al carrito`);
+                showNotification(productName + ' agregado al carrito');
             });
         });
 
-        // Notification function
+        // Notification
         function showNotification(message) {
             const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: linear-gradient(135deg, #FF6B35 0%, #ffc857 100%);
-                color: #0f0f0f;
-                padding: 1.5rem 2rem;
-                font-weight: 700;
-                z-index: 10000;
-                clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
-                box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
-                animation: slideInRight 0.3s ease;
-            `;
+            notification.style.cssText = 'position:fixed;top:100px;right:20px;background:linear-gradient(135deg,#FF6B35,#ffc857);color:#0f0f0f;padding:1.5rem 2rem;font-weight:700;z-index:10000;box-shadow:0 10px 30px rgba(255,107,53,0.5);';
             notification.textContent = message;
             document.body.appendChild(notification);
             
-            setTimeout(() => {
-                notification.style.animation = 'slideOutRight 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
+            setTimeout(function() {
+                notification.remove();
             }, 2500);
         }
-    </script>
 
-    <style>
-        @keyframes slideInRight {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideOutRight {
-            from {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-        }
-    </style>
+        // Form submission
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias! Tu cotización ha sido enviada.\n\nNos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
