@@ -528,6 +528,121 @@
             position: relative;
         }
 
+        /* Products Catalog */
+        .products-catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-item {
+            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--dark-blue) 100%);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-orange);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.4);
+        }
+
+        .product-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-item:hover .product-image img {
+            transform: scale(1.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--primary-orange) 100%);
+            color: var(--black);
+            padding: 0.5rem 1rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-badge.hot {
+            background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
+            color: white;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .product-category {
+            color: var(--accent-yellow);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .product-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-orange);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-yellow) 100%);
+            color: var(--black);
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            position: relative;
+        }
+
         .search-input {
             width: 100%;
             padding: 1.2rem 1.5rem;
@@ -664,6 +779,243 @@
         <input type="text" id="searchInput" class="search-input" placeholder="Buscar productos, categorías, proyectos...">
         <div id="searchResults" class="search-results"></div>
     </div>
+
+    <!-- Productos Destacados Section -->
+    <section id="productos" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Catálogo de Productos</h2>
+        </div>
+        <div class="products-catalog">
+            <!-- Herramientas -->
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="herramientas.jpg" alt="Taladro Eléctrico">
+                    <div class="product-badge">Nuevo</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Taladro Percutor 800W</h3>
+                    <p class="product-category">Herramientas</p>
+                    <p class="product-price">RD$ 4,500</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="herramientas.jpg" alt="Martillo">
+                    <div class="product-badge hot">Popular</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Martillo Profesional 16oz</h3>
+                    <p class="product-category">Herramientas</p>
+                    <p class="product-price">RD$ 850</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="herramientas.jpg" alt="Sierra Circular">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Sierra Circular 7¼"</h3>
+                    <p class="product-category">Herramientas</p>
+                    <p class="product-price">RD$ 6,200</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <!-- Construcción -->
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Construcción.jpg" alt="Cemento">
+                    <div class="product-badge hot">Popular</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Cemento Gris 42.5kg</h3>
+                    <p class="product-category">Construcción</p>
+                    <p class="product-price">RD$ 380</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Construcción.jpg" alt="Varillas">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Varillas 3/8" x 6m</h3>
+                    <p class="product-category">Construcción</p>
+                    <p class="product-price">RD$ 285</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Construcción.jpg" alt="Bloques">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Bloques 15x20x40cm</h3>
+                    <p class="product-category">Construcción</p>
+                    <p class="product-price">RD$ 45</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <!-- Plomería -->
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Tubería y accesorios.jpg" alt="Tubería PVC">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Tubería PVC 2" x 6m</h3>
+                    <p class="product-category">Plomería</p>
+                    <p class="product-price">RD$ 420</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Tubería y accesorios.jpg" alt="Codos PVC">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Codo PVC 90° 2"</h3>
+                    <p class="product-category">Plomería</p>
+                    <p class="product-price">RD$ 65</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Tubería y accesorios.jpg" alt="Llaves de paso">
+                    <div class="product-badge">Nuevo</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Llave de Paso 1/2"</h3>
+                    <p class="product-category">Plomería</p>
+                    <p class="product-price">RD$ 280</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <!-- Electricidad -->
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Electricidad.jpg" alt="Cable eléctrico">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Cable THW #12 (rollo 100m)</h3>
+                    <p class="product-category">Electricidad</p>
+                    <p class="product-price">RD$ 3,200</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Electricidad.jpg" alt="Breakers">
+                    <div class="product-badge hot">Popular</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Breaker 2x30A</h3>
+                    <p class="product-category">Electricidad</p>
+                    <p class="product-price">RD$ 580</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Electricidad.jpg" alt="Tomacorrientes">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Tomacorriente Doble</h3>
+                    <p class="product-category">Electricidad</p>
+                    <p class="product-price">RD$ 125</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <!-- Pintura -->
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Recubrimientos industriales.jpg" alt="Pintura látex">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Pintura Látex 5 Galones</h3>
+                    <p class="product-category">Pintura</p>
+                    <p class="product-price">RD$ 2,850</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Recubrimientos industriales.jpg" alt="Esmalte">
+                    <div class="product-badge">Nuevo</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Esmalte Industrial 1 Galón</h3>
+                    <p class="product-category">Pintura</p>
+                    <p class="product-price">RD$ 980</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Recubrimientos industriales.jpg" alt="Brochas">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Set de Brochas Profesional</h3>
+                    <p class="product-category">Pintura</p>
+                    <p class="product-price">RD$ 450</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <!-- Seguridad -->
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Equipo de protección.jpg" alt="Casco">
+                    <div class="product-badge hot">Popular</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Casco de Seguridad</h3>
+                    <p class="product-category">Seguridad</p>
+                    <p class="product-price">RD$ 380</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Equipo de protección.jpg" alt="Guantes">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Guantes de Seguridad (Par)</h3>
+                    <p class="product-category">Seguridad</p>
+                    <p class="product-price">RD$ 180</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="Equipo de protección.jpg" alt="Gafas">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Gafas de Protección</h3>
+                    <p class="product-category">Seguridad</p>
+                    <p class="product-price">RD$ 220</p>
+                    <button class="add-to-cart-btn">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Categorías Section -->
     <section id="categorias" class="section">
@@ -815,7 +1167,7 @@
             </div>
             <div class="contact-card">
                 <h3>📞 Contacto</h3>
-                <p>Teléfono: +1 (809) 555-0100<br>Email: ventas@ferreteria.com</p>
+                <p>Teléfono: +1 (809) 555-0100<br>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7402111a0015073412110606110011061d155a171b19">[email&#160;protected]</a></p>
             </div>
             <div class="contact-card">
                 <h3>🕐 Horario</h3>
@@ -864,7 +1216,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Search Database
         const searchDatabase = [
             // Categorías
@@ -985,9 +1337,88 @@
 
         // Cart functionality (basic)
         let cartCount = 0;
+             const cartBtn = document.querySelector('.cart-btn span');
+        
         document.querySelector('.cart-btn').addEventListener('click', () => {
-            alert(`Carrito de compras (${cartCount} items)\n\nEsta funcionalidad estará disponible próximamente.`);
+            if (cartCount === 0) {
+                alert('Tu carrito está vacío.\n\nAgrega productos usando el botón "Agregar al Carrito".');
+            } else {
+                alert(`Carrito de compras (${cartCount} items)\n\nTotal estimado: Calculando...\n\nEsta funcionalidad estará completamente disponible próximamente.`);
+            }
         });
+
+        // Add to cart buttons
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const productItem = e.target.closest('.product-item');
+                const productName = productItem.querySelector('.product-name').textContent;
+                const productPrice = productItem.querySelector('.product-price').textContent;
+                
+                cartCount++;
+                cartBtn.textContent = cartCount;
+                
+                // Visual feedback
+                button.textContent = '✓ Agregado';
+                button.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
+                
+                setTimeout(() => {
+                    button.textContent = 'Agregar al Carrito';
+                    button.style.background = 'linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-yellow) 100%)';
+                }, 2000);
+                
+                // Show notification
+                showNotification(`${productName} agregado al carrito`);
+            });
+        });
+
+        // Notification function
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(135deg, #FF6B35 0%, #ffc857 100%);
+                color: #0f0f0f;
+                padding: 1.5rem 2rem;
+                font-weight: 700;
+                z-index: 10000;
+                clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+                box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
+                animation: slideInRight 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 2500);
+        }
     </script>
+
+    <style>
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+    </style>
 </body>
-</html>           
+</html>
