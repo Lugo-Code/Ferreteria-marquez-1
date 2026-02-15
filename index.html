@@ -1,18 +1,18 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FERRETERÍA INDUSTRIAL | Herramientas y Materiales de Construcción</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --steel-gray: #2a2e35;
-            --rust-orange: #d4551c;
-            --iron-black: #1a1d23;
-            --concrete-gray: #626872;
-            --metal-silver: #c5c9d0;
-            --warning-yellow: #ffc107;
+            --primary-orange: #FF6B35;
+            --dark-blue: #1a1d2e;
+            --steel-gray: #3d4451;
+            --light-gray: #c5c6c7;
+            --accent-yellow: #ffc857;
+            --black: #0f0f0f;
         }
 
         * {
@@ -22,165 +22,128 @@
         }
 
         body {
-            font-family: 'Barlow', sans-serif;
-            background-color: var(--steel-gray);
-            color: var(--metal-silver);
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--black);
+            color: white;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--iron-black) 0%, var(--steel-gray) 100%);
-            border-bottom: 3px solid var(--rust-orange);
-            position: sticky;
+        /* Navbar Industrial */
+        .navbar {
+            position: fixed;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
+            width: 100%;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--black) 100%);
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary-orange);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         .logo {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
-            color: var(--rust-orange);
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--metal-silver);
-            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-orange);
             text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--light-gray);
+            text-decoration: none;
             font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
             position: relative;
         }
 
-        .nav-links a::after {
+        .nav-menu a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--rust-orange);
-            transition: width 0.3s;
+            background: var(--primary-orange);
+            transition: width 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--rust-orange);
+        .nav-menu a:hover {
+            color: var(--accent-yellow);
         }
 
-        .nav-links a:hover::after {
+        .nav-menu a:hover::after {
             width: 100%;
         }
 
-        .cart-icon {
-            background: var(--rust-orange);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
+        .cart-btn {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-yellow) 100%);
+            color: var(--black);
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 0;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
             font-weight: 700;
-            transition: all 0.3s;
-            position: relative;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .cart-icon:hover {
-            background: #b54416;
-            transform: translateY(-2px);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--warning-yellow);
-            color: var(--iron-black);
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
+        .cart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.5);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(26, 29, 35, 0.7), rgba(26, 29, 35, 0.7)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232a2e35"/><g opacity="0.1"><path d="M0,300 L300,0 L600,300 L300,600 Z" fill="%23d4551c"/><path d="M600,300 L900,0 L1200,300 L900,600 Z" fill="%23ffc107"/></g></svg>');
-            background-size: cover;
-            background-position: center;
-            height: 600px;
+            margin-top: 80px;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
             position: relative;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 200, 87, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--dark-blue) 0%, var(--black) 100%);
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        .blueprint-grid {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(212, 85, 28, 0.03) 2px,
-                rgba(212, 85, 28, 0.03) 4px
-            );
-            animation: scanline 8s linear infinite;
-        }
-
-        @keyframes scanline {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(100%); }
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(255, 107, 53, 0.05) 49px, rgba(255, 107, 53, 0.05) 50px),
+                repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(255, 107, 53, 0.05) 49px, rgba(255, 107, 53, 0.05) 50px);
+            opacity: 0.6;
         }
 
         .hero-content {
-            max-width: 900px;
+            text-align: center;
+            z-index: 2;
             padding: 2rem;
-            position: relative;
-            z-index: 1;
+            animation: fadeInUp 1s ease-out;
         }
 
-        .hero h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 5rem;
-            color: white;
-            letter-spacing: 8px;
-            margin-bottom: 1rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
-            animation: slideDown 0.8s ease-out;
-        }
-
-        @keyframes slideDown {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(-50px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -188,268 +151,321 @@
             }
         }
 
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            text-shadow: 
+                0 0 30px rgba(255, 200, 87, 0.6),
+                3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 1rem;
+        }
+
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            color: var(--metal-silver);
-            animation: fadeIn 1s ease-out 0.3s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--rust-orange);
-            color: white;
-            padding: 1.2rem 3rem;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 2px;
-            border: 2px solid var(--rust-orange);
-            transition: all 0.3s;
-            animation: fadeIn 1s ease-out 0.6s both;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: var(--rust-orange);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(212, 85, 28, 0.4);
-        }
-
-        /* Search Section */
-        .search-section {
-            background: var(--iron-black);
-            padding: 3rem 2rem;
-            border-bottom: 1px solid var(--concrete-gray);
-        }
-
-        .search-container {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--light-gray);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 2rem;
         }
 
-        .search-box {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            background: var(--steel-gray);
-            border: 2px solid var(--concrete-gray);
-            color: white;
-            font-size: 1.1rem;
-            font-family: 'Barlow', sans-serif;
-            transition: all 0.3s;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--rust-orange);
-        }
-
-        .search-box button {
-            padding: 1rem 2.5rem;
-            background: var(--rust-orange);
-            border: none;
-            color: white;
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-yellow) 100%);
+            color: var(--black);
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
+            text-decoration: none;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
         }
 
-        .search-box button:hover {
-            background: #b54416;
+        .cta-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
         }
 
-        /* Categories */
-        .categories {
-            background: var(--steel-gray);
-            padding: 4rem 2rem;
+        /* Section Headers */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
         .section-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            text-align: center;
-            color: white;
-            letter-spacing: 4px;
-            margin-bottom: 3rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
             position: relative;
+            display: inline-block;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 150px;
             height: 3px;
-            background: var(--rust-orange);
+            background: linear-gradient(90deg, transparent, var(--primary-orange), var(--accent-yellow), var(--primary-orange), transparent);
         }
 
-        .category-grid {
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
         }
 
         .category-card {
-            background: var(--iron-black);
-            padding: 2rem;
-            text-align: center;
-            border: 2px solid transparent;
-            transition: all 0.4s;
-            cursor: pointer;
             position: relative;
             overflow: hidden;
-        }
-
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 85, 28, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .category-card:hover::before {
-            left: 100%;
+            height: 350px;
+            background: var(--steel-gray);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
         }
 
         .category-card:hover {
-            border-color: var(--rust-orange);
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            border-color: var(--primary-orange);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.4);
         }
 
-        .category-icon {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 2px solid var(--concrete-gray);
-        }
-
-        .category-card h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            color: var(--rust-orange);
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Products Section */
-        .products {
-            background: var(--iron-black);
-            padding: 4rem 2rem;
-        }
-
-        .products-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: var(--steel-gray);
-            border: 1px solid var(--concrete-gray);
-            padding: 1.5rem;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 85, 28, 0.3);
-            border-color: var(--rust-orange);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            background: var(--iron-black);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            overflow: hidden;
-            border: 2px solid var(--concrete-gray);
-        }
-
-        .product-image img {
+        .category-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
-        .product-badge {
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: var(--warning-yellow);
-            color: var(--iron-black);
-            padding: 0.3rem 0.8rem;
-            font-weight: 700;
-            font-size: 0.8rem;
-            z-index: 1;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 15, 15, 0.95) 0%, rgba(15, 15, 15, 0.7) 60%, transparent 100%);
+            padding: 2rem;
+            transform: translateY(0);
+            transition: all 0.4s ease;
         }
 
-        .product-card h3 {
-            font-size: 1.3rem;
-            color: white;
+        .category-card:hover .category-overlay {
+            background: linear-gradient(to top, rgba(255, 107, 53, 0.95) 0%, rgba(255, 107, 53, 0.7) 60%, transparent 100%);
+        }
+
+        .category-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: 0.5rem;
         }
 
-        .product-price {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--rust-orange);
-            margin: 1rem 0;
+        .category-card:hover .category-title {
+            color: var(--black);
         }
 
-        .add-to-cart {
-            width: 100%;
-            padding: 1rem;
-            background: var(--rust-orange);
-            border: none;
-            color: white;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
+        .category-desc {
+            color: var(--light-gray);
+            font-size: 1.1rem;
         }
 
-        .add-to-cart:hover {
-            background: #b54416;
+        .category-card:hover .category-desc {
+            color: rgba(0, 0, 0, 0.8);
         }
 
-        /* Quote Form */
-        .quote-section {
+        /* Projects Gallery */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
             background: var(--steel-gray);
-            padding: 4rem 2rem;
+            border: 3px solid var(--primary-orange);
+            transition: all 0.4s ease;
         }
 
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-orange), var(--accent-yellow), var(--primary-orange));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 50px rgba(255, 107, 53, 0.5);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.15);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(26, 29, 46, 0.95) 0%, transparent 100%);
+            padding: 2rem;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--dark-blue) 100%);
+            padding: 2.5rem;
+            border-left: 5px solid var(--primary-orange);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateX(10px);
+            box-shadow: -5px 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .contact-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .contact-card p {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--black) 100%);
+            padding: 4rem 2rem 2rem;
+            border-top: 3px solid var(--primary-orange);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: var(--accent-yellow);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--light-gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-orange);
+            padding-left: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 107, 53, 0.3);
+            color: var(--light-gray);
+        }
+
+        /* Form Styling */
         .quote-form {
             max-width: 800px;
             margin: 0 auto;
-            background: var(--iron-black);
+            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--dark-blue) 100%);
             padding: 3rem;
-            border: 2px solid var(--concrete-gray);
+            border: 2px solid var(--primary-orange);
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
         }
 
         .form-group {
@@ -458,420 +474,318 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: var(--rust-orange);
+            color: var(--accent-yellow);
             font-weight: 600;
+            margin-bottom: 0.5rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.05em;
         }
 
         .form-group input,
-        .form-group textarea,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 1rem;
-            background: var(--steel-gray);
-            border: 2px solid var(--concrete-gray);
+            background: rgba(15, 15, 15, 0.7);
+            border: 2px solid rgba(255, 107, 53, 0.3);
             color: white;
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Rajdhani', sans-serif;
             font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: var(--rust-orange);
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-quote {
+        .submit-btn {
             width: 100%;
             padding: 1.2rem;
-            background: var(--rust-orange);
-            border: none;
-            color: white;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-yellow) 100%);
+            color: var(--black);
+            font-size: 1.2rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+            transition: all 0.3s ease;
         }
 
-        .submit-quote:hover {
-            background: #b54416;
-            transform: translateY(-2px);
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
         }
 
-        /* Gallery */
-        .gallery {
-            background: var(--iron-black);
-            padding: 4rem 2rem;
-        }
-
-        .gallery-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            height: 300px;
-            background: var(--steel-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 3rem auto;
             position: relative;
-            cursor: pointer;
-            border: 2px solid var(--concrete-gray);
         }
 
-        .gallery-item img {
+        .search-input {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
+            padding: 1.2rem 1.5rem;
+            background: rgba(61, 68, 81, 0.8);
+            border: 2px solid var(--primary-orange);
+            color: white;
+            font-size: 1.1rem;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.1);
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
         }
 
-        .gallery-item::before {
-            content: '';
+        .search-results {
             position: absolute;
-            top: 0;
+            top: 100%;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: rgba(212, 85, 28, 0.8);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 1;
+            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--dark-blue) 100%);
+            border: 2px solid var(--primary-orange);
+            margin-top: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 100;
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
         }
 
-        .gallery-item:hover::before {
-            opacity: 1;
+        .search-results.active {
+            display: block;
         }
 
-        .gallery-icon {
-            font-size: 5rem;
-            color: var(--concrete-gray);
+        .search-result-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .gallery-text {
-            position: absolute;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 2;
+        .search-result-item:hover {
+            background: rgba(255, 107, 53, 0.2);
+            padding-left: 2rem;
         }
 
-        .gallery-item:hover .gallery-text {
-            opacity: 1;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--steel-gray);
-            padding: 4rem 2rem;
-        }
-
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .contact-info {
-            background: var(--iron-black);
-            padding: 2rem;
-            border-left: 4px solid var(--rust-orange);
-        }
-
-        .contact-info h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--rust-orange);
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--rust-orange);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--iron-black);
-            padding: 3rem 2rem 1rem;
-            border-top: 3px solid var(--rust-orange);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            color: var(--rust-orange);
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
+        .search-result-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: var(--accent-yellow);
             margin-bottom: 0.5rem;
         }
 
-        .footer-section a {
-            color: var(--metal-silver);
-            text-decoration: none;
-            transition: color 0.3s;
+        .search-result-desc {
+            color: var(--light-gray);
+            font-size: 1rem;
         }
 
-        .footer-section a:hover {
-            color: var(--rust-orange);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--concrete-gray);
-            color: var(--concrete-gray);
-        }
-
-        /* Cart Sidebar */
-        .cart-sidebar {
-            position: fixed;
-            right: -400px;
-            top: 0;
-            width: 400px;
-            height: 100vh;
-            background: var(--iron-black);
-            box-shadow: -5px 0 20px rgba(0,0,0,0.5);
-            z-index: 2000;
-            transition: right 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart-sidebar.active {
-            right: 0;
-        }
-
-        .cart-header {
-            padding: 2rem;
-            background: var(--steel-gray);
-            border-bottom: 2px solid var(--rust-orange);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-header h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--rust-orange);
-            letter-spacing: 2px;
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 2rem;
-        }
-
-        .cart-item {
-            padding: 1rem;
-            border-bottom: 1px solid var(--concrete-gray);
-            margin-bottom: 1rem;
-        }
-
-        .cart-footer {
-            padding: 2rem;
-            background: var(--steel-gray);
-            border-top: 2px solid var(--rust-orange);
-        }
-
-        .cart-total {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--rust-orange);
-            margin-bottom: 1rem;
-        }
-
-        .checkout-button {
-            width: 100%;
-            padding: 1.2rem;
-            background: var(--rust-orange);
-            border: none;
-            color: white;
+        .search-result-type {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--primary-orange);
+            color: var(--black);
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            cursor: pointer;
+            margin-top: 0.5rem;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+        }
+
+        .no-results {
+            padding: 2rem;
+            text-align: center;
+            color: var(--light-gray);
+            font-size: 1.1rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
+            .nav-menu {
                 display: none;
             }
 
-            .hero h1 {
-                font-size: 3rem;
+            .hero {
+                min-height: 70vh;
             }
 
-            .cart-sidebar {
-                width: 100%;
-                right: -100%;
+            .section {
+                padding: 4rem 1rem;
             }
+
+            .categories-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">FERRETERÍA MARQUEZ</div>
-            <ul class="nav-links">
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#categorias">Categorías</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#cotizacion">Cotización</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-            <div class="cart-icon" onclick="toggleCart()">
-                🛒 Carrito
-                <span class="cart-count">0</span>
-            </div>
-        </nav>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">FERRETERÍA MARQUEZ</div>
+        <ul class="nav-menu">
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#cotizacion">Cotización</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="cart-btn">🛒 Carrito <span>0</span></button>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="blueprint-grid"></div>
         <div class="hero-content">
             <h1>CONSTRUYE TU FUTURO</h1>
             <p>Las mejores herramientas y materiales para tus proyectos industriales y de construcción</p>
-            <a href="#productos" class="cta-button">Ver Catálogo</a>
+            <a href="#productos" class="cta-btn">Ver Catálogo</a>
         </div>
     </section>
 
-    <!-- Search Section -->
-    <section class="search-section">
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Buscar productos, herramientas, materiales..." onkeyup="searchProducts()">
-                <button onclick="searchProducts()">Buscar</button>
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar productos, categorías, proyectos...">
+        <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <!-- Categorías Section -->
+    <section id="categorias" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Nuestras Categorías</h2>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card">
+                <img src="herramientas.jpg" alt="Herramientas">
+                <div class="category-overlay">
+                    <h3 class="category-title">Herramientas</h3>
+                    <p class="category-desc">Eléctricas y manuales</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="Construcción.jpg" alt="Construcción">
+                <div class="category-overlay">
+                    <h3 class="category-title">Construcción</h3>
+                    <p class="category-desc">Materiales de obra</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="Tubería y accesorios.jpg" alt="Plomería">
+                <div class="category-overlay">
+                    <h3 class="category-title">Plomería</h3>
+                    <p class="category-desc">Tubería y accesorios</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="Electricidad.jpg" alt="Electricidad">
+                <div class="category-overlay">
+                    <h3 class="category-title">Electricidad</h3>
+                    <p class="category-desc">Cables y componentes</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="Recubrimientos industriales.jpg" alt="Pintura">
+                <div class="category-overlay">
+                    <h3 class="category-title">Pintura</h3>
+                    <p class="category-desc">Recubrimientos industriales</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="Equipo de protección.jpg" alt="Seguridad">
+                <div class="category-overlay">
+                    <h3 class="category-title">Seguridad</h3>
+                    <p class="category-desc">Equipo de protección</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Categories -->
-    <section class="categories" id="categorias">
-        <h2 class="section-title">Nuestras Categorías</h2>
-        <div class="category-grid">
-            <div class="category-card" onclick="filterByCategory('herramientas')">
-                <img src="herramientas.jpg" alt="Herramientas" class="category-icon">
-                <h3>Herramientas</h3>
-                <p>Eléctricas y manuales</p>
+    <!-- Proyectos Section -->
+    <section id="proyectos" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Galería de Proyectos</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="Construcción Industrial.jpg" alt="Construcción Industrial">
+                <div class="project-overlay">
+                    <h3 class="project-title">Construcción Industrial</h3>
+                </div>
             </div>
-            <div class="category-card" onclick="filterByCategory('construccion')">
-                <img src="Construcción.jpg" alt="Construcción" class="category-icon">
-                <h3>Construcción</h3>
-                <p>Materiales de obra</p>
+            <div class="project-card">
+                <img src="Proyectos Residenciales.jpg" alt="Proyectos Residenciales">
+                <div class="project-overlay">
+                    <h3 class="project-title">Proyectos Residenciales</h3>
+                </div>
             </div>
-            <div class="category-card" onclick="filterByCategory('plomeria')">
-                <img src="Tubería y accesorios.jpg" alt="Plomería" class="category-icon">
-                <h3>Plomería</h3>
-                <p>Tubería y accesorios</p>
+            <div class="project-card">
+                <img src="instalaciones tecnicas.jpg" alt="Instalaciones Técnicas">
+                <div class="project-overlay">
+                    <h3 class="project-title">Instalaciones Técnicas</h3>
+                </div>
             </div>
-            <div class="category-card" onclick="filterByCategory('electricidad')">
-                <img src="Electricidad.jpg" alt="Electricidad" class="category-icon">
-                <h3>Electricidad</h3>
-                <p>Cables y componentes</p>
+            <div class="project-card">
+                <img src="Maquinaria Pesada.jpg" alt="Maquinaria Pesada">
+                <div class="project-overlay">
+                    <h3 class="project-title">Maquinaria Pesada</h3>
+                </div>
             </div>
-            <div class="category-card" onclick="filterByCategory('pintura')">
-                <img src="Recubrimientos industriales.jpg" alt="Pintura" class="category-icon">
-                <h3>Pintura</h3>
-                <p>Recubrimientos industriales</p>
+            <div class="project-card">
+                <img src="Infraestructura.jpg" alt="Infraestructura">
+                <div class="project-overlay">
+                    <h3 class="project-title">Infraestructura</h3>
+                </div>
             </div>
-            <div class="category-card" onclick="filterByCategory('seguridad')">
-                <img src="Equipo de protección.jpg" alt="Seguridad" class="category-icon">
-                <h3>Seguridad</h3>
-                <p>Equipo de protección</p>
+            <div class="project-card">
+                <img src="Plantas Industriales.jpg" alt="Plantas Industriales">
+                <div class="project-overlay">
+                    <h3 class="project-title">Plantas Industriales</h3>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Products -->
-    <section class="products" id="productos">
-        <h2 class="section-title">Catálogo de Productos</h2>
-        <div class="products-grid" id="productsGrid">
-            <!-- Products will be generated by JavaScript -->
+    <!-- Cotización Section -->
+    <section id="cotizacion" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Solicitar Cotización</h2>
         </div>
-    </section>
-
-    <!-- Quote Form -->
-    <section class="quote-section" id="cotizacion">
-        <h2 class="section-title">Solicitar Cotización</h2>
-        <form class="quote-form" onsubmit="submitQuote(event)">
+        <form class="quote-form">
             <div class="form-group">
-                <label for="nombre">Nombre Completo</label>
-                <input type="text" id="nombre" required>
+                <label>Nombre Completo</label>
+                <input type="text" required>
             </div>
             <div class="form-group">
-                <label for="empresa">Empresa</label>
-                <input type="text" id="empresa">
+                <label>Empresa</label>
+                <input type="text">
             </div>
             <div class="form-group">
-                <label for="email">Correo Electrónico</label>
-                <input type="email" id="email" required>
+                <label>Correo Electrónico</label>
+                <input type="email" required>
             </div>
             <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" required>
+                <label>Teléfono</label>
+                <input type="tel" required>
             </div>
             <div class="form-group">
-                <label for="categoria">Categoría de Producto</label>
-                <select id="categoria" required>
+                <label>Categoría de Producto</label>
+                <select required>
                     <option value="">Seleccione una categoría</option>
                     <option value="herramientas">Herramientas</option>
                     <option value="construccion">Construcción</option>
@@ -882,79 +796,37 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="mensaje">Detalles del Proyecto</label>
-                <textarea id="mensaje" required placeholder="Describa los productos y cantidades que necesita..."></textarea>
+                <label>Detalles del Proyecto</label>
+                <textarea rows="5" required></textarea>
             </div>
-            <button type="submit" class="submit-quote">Enviar Cotización</button>
+            <button type="submit" class="submit-btn">Enviar Cotización</button>
         </form>
     </section>
 
-    <!-- Gallery -->
-    <section class="gallery" id="proyectos">
-        <h2 class="section-title">Galería de Proyectos</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="Construcción Industrial.jpg" alt="Construcción Industrial">
-                <div class="gallery-text">Construcción Industrial</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Proyectos Residenciales.jpg" alt="Proyectos Residenciales">
-                <div class="gallery-text">Proyectos Residenciales</div>
-            </div>
-            <div class="gallery-item">
-                <img src="instalaciones tecnicas.jpg" alt="Instalaciones Técnicas">
-                <div class="gallery-text">Instalaciones Técnicas</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Maquinaria Pesada.jpg" alt="Maquinaria Pesada">
-                <div class="gallery-text">Maquinaria Pesada</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Infraestructura.jpg" alt="Infraestructura">
-                <div class="gallery-text">Infraestructura</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Plantas Industriales.jpg" alt="Plantas Industriales">
-                <div class="gallery-text">Plantas Industriales</div>
-            </div>
+    <!-- Contacto Section -->
+    <section id="contacto" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Información de Contacto</h2>
         </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact" id="contacto">
-        <h2 class="section-title">Información de Contacto</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Ubicación</h3>
-                <div class="contact-detail">
-                    <span class="contact-icon">📍</span>
-                    <span>Calle Principal #123, Zona Industrial<br>Santiago de los Caballeros</span>
-                </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>📍 Ubicación</h3>
+                <p>Calle Principal #123, Zona Industrial<br>Santiago de los Caballeros</p>
             </div>
-            <div class="contact-info">
-                <h3>Contacto</h3>
-                <div class="contact-detail">
-                    <span class="contact-icon">📞</span>
-                    <span>+1 (809) 555-0100</span>
-                </div>
-                <div class="contact-detail">
-                    <span class="contact-icon">✉️</span>
-                    <span>ventas@ferreteria.com</span>
-                </div>
+            <div class="contact-card">
+                <h3>📞 Contacto</h3>
+                <p>Teléfono: +1 (809) 555-0100<br>Email: ventas@ferreteria.com</p>
             </div>
-            <div class="contact-info">
-                <h3>Horario</h3>
-                <div class="contact-detail">
-                    <span class="contact-icon">🕐</span>
-                    <span>Lun - Vie: 7:00 AM - 6:00 PM<br>Sábado: 8:00 AM - 5:00 PM<br>Domingo: Cerrado</span>
-                </div>
+            <div class="contact-card">
+                <h3>🕐 Horario</h3>
+                <p>Lun - Vie: 7:00 AM - 6:00 PM<br>Sábado: 8:00 AM - 5:00 PM<br>Domingo: Cerrado</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
+        <div class="footer-grid">
             <div class="footer-section">
                 <h3>Sobre Nosotros</h3>
                 <p>Somos tu proveedor de confianza en herramientas y materiales de construcción con más de 20 años de experiencia en el mercado.</p>
@@ -988,195 +860,134 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Ferretería Industrial. Todos los derechos reservados.</p>
+            <p>© 2026 Ferretería Industrial. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h2>Carrito</h2>
-            <button class="close-cart" onclick="toggleCart()">×</button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <p style="text-align: center; color: var(--concrete-gray); padding: 2rem;">Tu carrito está vacío</p>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
-            <button class="checkout-button" onclick="checkout()">Proceder al Pago</button>
-        </div>
-    </div>
-
     <script>
-        // Product Database with real images
-        const products = [
-            { id: 1, name: 'Taladro Percutor Industrial', category: 'herramientas', price: 4500, image: 'Taladro Percutor Industrial.jpg', badge: 'NUEVO' },
-            { id: 2, name: 'Sierra Circular 7 1/4"', category: 'herramientas', price: 3200, image: 'CIERRA SIRCULAR.jpg', badge: 'OFERTA' },
-            { id: 3, name: 'Cemento Portland 42.5 kg', category: 'construccion', price: 350, image: 'Cemento Portland 42.5 kg.jpg', badge: 'OFERTA' },
-            { id: 4, name: 'Varilla de Construcción 3/8"', category: 'construccion', price: 180, image: 'Varilla de Construcción.jpg', badge: '' },
-            { id: 5, name: 'Tubería PVC 1/2" x 6m', category: 'plomeria', price: 220, image: 'Tubería PVC.jpg', badge: '' },
-            { id: 6, name: 'Llave de Paso Bronce 1/2"', category: 'plomeria', price: 450, image: 'Llave de Paso.jpg', badge: '' },
-            { id: 7, name: 'Cable Eléctrico THW #12', category: 'electricidad', price: 280, image: 'Cable Eléctrico THW.jpg', badge: '' },
-            { id: 8, name: 'Interruptor Termomagnético 20A', category: 'electricidad', price: 380, image: 'Interruptor Termomagnético 20A.jpg', badge: 'NUEVO' },
-            { id: 9, name: 'Pintura Industrial Gris 5 gal', category: 'pintura', price: 1800, image: 'Pintura Industrial Gris 5 gal.jpg', badge: '' },
-            { id: 10, name: 'Rodillo Profesional 9"', category: 'pintura', price: 150, image: 'Rodillo Profesional 9.jpg', badge: '' },
-            { id: 11, name: 'Casco de Seguridad', category: 'seguridad', price: 280, image: 'Casco de Seguridad.jpg', badge: '' },
-            { id: 12, name: 'Guantes de Cuero Reforzado', category: 'seguridad', price: 320, image: 'Guantes de Cuero Reforzado.jpg', badge: 'OFERTA' }
+        // Search Database
+        const searchDatabase = [
+            // Categorías
+            { title: 'Herramientas', desc: 'Herramientas eléctricas y manuales de alta calidad', type: 'Categoría', link: '#categorias' },
+            { title: 'Construcción', desc: 'Materiales de obra certificados', type: 'Categoría', link: '#categorias' },
+            { title: 'Plomería', desc: 'Tubería y accesorios profesionales', type: 'Categoría', link: '#categorias' },
+            { title: 'Electricidad', desc: 'Cables y componentes eléctricos', type: 'Categoría', link: '#categorias' },
+            { title: 'Pintura', desc: 'Recubrimientos industriales premium', type: 'Categoría', link: '#categorias' },
+            { title: 'Seguridad', desc: 'Equipo de protección certificado', type: 'Categoría', link: '#categorias' },
+            // Proyectos
+            { title: 'Construcción Industrial', desc: 'Proyectos de construcción industrial', type: 'Proyecto', link: '#proyectos' },
+            { title: 'Proyectos Residenciales', desc: 'Construcciones residenciales', type: 'Proyecto', link: '#proyectos' },
+            { title: 'Instalaciones Técnicas', desc: 'Instalaciones técnicas especializadas', type: 'Proyecto', link: '#proyectos' },
+            { title: 'Maquinaria Pesada', desc: 'Proyectos con maquinaria pesada', type: 'Proyecto', link: '#proyectos' },
+            { title: 'Infraestructura', desc: 'Proyectos de infraestructura', type: 'Proyecto', link: '#proyectos' },
+            { title: 'Plantas Industriales', desc: 'Construcción de plantas industriales', type: 'Proyecto', link: '#proyectos' },
+            // Productos comunes
+            { title: 'Taladros', desc: 'Taladros eléctricos y percutores', type: 'Producto', link: '#categorias' },
+            { title: 'Martillos', desc: 'Martillos de construcción', type: 'Producto', link: '#categorias' },
+            { title: 'Cemento', desc: 'Cemento de alta calidad', type: 'Producto', link: '#categorias' },
+            { title: 'Arena', desc: 'Arena para construcción', type: 'Producto', link: '#categorias' },
+            { title: 'Varillas', desc: 'Varillas de acero para construcción', type: 'Producto', link: '#categorias' },
+            { title: 'Tuberías PVC', desc: 'Tuberías de PVC para plomería', type: 'Producto', link: '#categorias' },
+            { title: 'Cables eléctricos', desc: 'Cables y alambres eléctricos', type: 'Producto', link: '#categorias' },
+            { title: 'Enchufes', desc: 'Enchufes y tomas eléctricas', type: 'Producto', link: '#categorias' },
+            { title: 'Brochas', desc: 'Brochas y rodillos para pintura', type: 'Producto', link: '#categorias' },
+            { title: 'Esmalte', desc: 'Esmalte y pinturas industriales', type: 'Producto', link: '#categorias' },
+            { title: 'Cascos', desc: 'Cascos de seguridad industrial', type: 'Producto', link: '#categorias' },
+            { title: 'Guantes', desc: 'Guantes de protección', type: 'Producto', link: '#categorias' },
+            { title: 'Gafas de seguridad', desc: 'Gafas protectoras', type: 'Producto', link: '#categorias' }
         ];
 
-        let cart = [];
-        let filteredProducts = [...products];
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
 
-        // Initialize products display
-        function displayProducts(productsToShow) {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = productsToShow.map(product => `
-                <div class="product-card">
-                    ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
-                    <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}">
-                    </div>
-                    <h3>${product.name}</h3>
-                    <p style="color: var(--concrete-gray);">${getCategoryName(product.category)}</p>
-                    <div class="product-price">$${product.price.toFixed(2)}</div>
-                    <button class="add-to-cart" onclick="addToCart(${product.id})">Agregar al Carrito</button>
-                </div>
-            `).join('');
-        }
-
-        function getCategoryName(category) {
-            const names = {
-                'herramientas': 'Herramientas',
-                'construccion': 'Construcción',
-                'plomeria': 'Plomería',
-                'electricidad': 'Electricidad',
-                'pintura': 'Pintura',
-                'seguridad': 'Seguridad'
-            };
-            return names[category] || category;
-        }
-
-        // FIXED: Search functionality now works properly
-        function searchProducts() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            
-            if (searchTerm === '') {
-                // If search is empty, show all products
-                filteredProducts = [...products];
-            } else {
-                // Filter products by search term
-                filteredProducts = products.filter(product => 
-                    product.name.toLowerCase().includes(searchTerm) ||
-                    getCategoryName(product.category).toLowerCase().includes(searchTerm) ||
-                    product.category.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            displayProducts(filteredProducts);
-            
-            // Show message if no products found
-            if (filteredProducts.length === 0) {
-                document.getElementById('productsGrid').innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--concrete-gray);">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">No se encontraron productos</h3>
-                        <p>Intenta con otro término de búsqueda</p>
-                    </div>
-                `;
-            }
-        }
-
-        // Filter by category
-        function filterByCategory(category) {
-            filteredProducts = products.filter(product => product.category === category);
-            displayProducts(filteredProducts);
-            document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Cart functions
-        function toggleCart() {
-            document.getElementById('cartSidebar').classList.toggle('active');
-        }
-
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity++;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-            
-            updateCart();
-        }
-
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCart();
-        }
-
-        function updateCart() {
-            const cartItems = document.getElementById('cartItems');
-            const cartCount = document.querySelector('.cart-count');
-            const cartTotal = document.getElementById('cartTotal');
-            
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            cartCount.textContent = totalItems;
-            cartTotal.textContent = totalPrice.toFixed(2);
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p style="text-align: center; color: var(--concrete-gray); padding: 2rem;">Tu carrito está vacío</p>';
-            } else {
-                cartItems.innerHTML = cart.map(item => `
-                    <div class="cart-item">
-                        <div style="display: flex; justify-content: space-between; align-items: start;">
-                            <div>
-                                <h4 style="color: white; margin-bottom: 0.5rem;">${item.name}</h4>
-                                <p style="color: var(--concrete-gray);">Cantidad: ${item.quantity}</p>
-                                <p style="color: var(--rust-orange); font-weight: 700;">$${(item.price * item.quantity).toFixed(2)}</p>
-                            </div>
-                            <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: var(--rust-orange); font-size: 1.5rem; cursor: pointer;">×</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Tu carrito está vacío');
+        // Search function
+        function performSearch(query) {
+            if (query.length < 2) {
+                searchResults.classList.remove('active');
                 return;
             }
-            alert('Gracias por tu compra! Total: $' + cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2) + '\n\nNos pondremos en contacto contigo pronto.');
-            cart = [];
-            updateCart();
-            toggleCart();
+
+            const results = searchDatabase.filter(item => 
+                item.title.toLowerCase().includes(query.toLowerCase()) ||
+                item.desc.toLowerCase().includes(query.toLowerCase())
+            );
+
+            displayResults(results);
         }
 
-        // Quote form submission
-        function submitQuote(event) {
-            event.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            
-            alert(`¡Gracias ${nombre}! Hemos recibido tu solicitud de cotización.\n\nTe contactaremos a ${email} en las próximas 24 horas.`);
-            event.target.reset();
+        // Display results
+        function displayResults(results) {
+            searchResults.innerHTML = '';
+
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">No se encontraron resultados</div>';
+                searchResults.classList.add('active');
+                return;
+            }
+
+            results.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+                resultItem.innerHTML = `
+                    <div class="search-result-title">${result.title}</div>
+                    <div class="search-result-desc">${result.desc}</div>
+                    <span class="search-result-type">${result.type}</span>
+                `;
+                resultItem.addEventListener('click', () => {
+                    window.location.href = result.link;
+                    searchResults.classList.remove('active');
+                    searchInput.value = '';
+                });
+                searchResults.appendChild(resultItem);
+            });
+
+            searchResults.classList.add('active');
         }
 
-        // Add Enter key support for search
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    searchProducts();
+        // Event listeners
+        searchInput.addEventListener('input', (e) => {
+            performSearch(e.target.value);
+        });
+
+        searchInput.addEventListener('focus', (e) => {
+            if (e.target.value.length >= 2) {
+                performSearch(e.target.value);
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
 
-        // Initialize
-        displayProducts(products);
+        // Form submission
+        document.querySelector('.quote-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Gracias! Tu cotización ha sido enviada. Nos pondremos en contacto contigo pronto.');
+            e.target.reset();
+        });
+
+        // Cart functionality (basic)
+        let cartCount = 0;
+        document.querySelector('.cart-btn').addEventListener('click', () => {
+            alert(`Carrito de compras (${cartCount} items)\n\nEsta funcionalidad estará disponible próximamente.`);
+        });
     </script>
 </body>
-</html>
+</html>           
